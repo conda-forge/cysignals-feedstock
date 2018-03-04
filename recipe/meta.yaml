@@ -1,6 +1,6 @@
 {% set name = "cysignals" %}
-{% set version = "1.6.7" %}
-{% set sha256 = "e7e9dc4fe971f5c65dfa75a3b6444880cd8d997c63bc1941c324e6a46191f9e9" %}
+{% set version = "1.6.5" %}
+{% set sha256 = "e559105e9f8bb5e64ed2eb350ba5ebb51a117cb3a0aa0fb4388b4cdd557a2bef" %}
 
 package:
   name: {{ name|lower }}
@@ -8,7 +8,7 @@ package:
 
 source:
   fn: {{ name }}-{{ version }}.tar.gz
-  url: https://github.com/sagemath/{{ name }}/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
+  url: https://github.com/sagemath/{{ name }}/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.bz2
   sha256: {{ sha256 }}
 
 build:

@@ -1,6 +1,6 @@
 {% set name = "cysignals" %}
-{% set version = "1.6.4" %}
-{% set sha256 = "fc8202e563c388cc19b862f08c1adc9d0441764b4a920d5fa0b3db50913bb2d9" %}
+{% set version = "1.6.5" %}
+{% set sha256 = "e559105e9f8bb5e64ed2eb350ba5ebb51a117cb3a0aa0fb4388b4cdd557a2bef" %}
 
 package:
   name: {{ name|lower }}
@@ -45,3 +45,4 @@ extra:
   recipe-maintainers:
     - dfroger
     - isuruf
+    - saraedum

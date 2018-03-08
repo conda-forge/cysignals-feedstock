@@ -1,0 +1,32 @@
+From c4bff5e2b87b62220b17e2b7c38a0e2165986f32 Mon Sep 17 00:00:00 2001
+From: Jeroen Demeyer <jdemeyer@cage.ugent.be>
+Date: Thu, 8 Mar 2018 16:57:20 +0100
+Subject: [PATCH] Decrease stack size in Makefile
+
+---
+ Makefile | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 77468a1..b535b2f 100644
+--- a/Makefile
++++ b/Makefile
+@@ -4,9 +4,14 @@ VERSION = $(shell cat VERSION)
+ 
+ PYTHON = python
+ PIP = $(PYTHON) -m pip -v
+-DOCTEST = $(PYTHON) -B rundoctests.py
+ LS_R = ls -Ra1
+ 
++# We add ulimit -s 1024 in this Makefile to work around a very strange
++# OS X bug manifesting itself with Python 3 and old versions of GNU make.
++# This was discovered at https://github.com/sagemath/cysignals/issues/71
++# but I don't know a good analysis nor solution.
++DOCTEST = ulimit -s 1024 && $(PYTHON) -B rundoctests.py
++
+ 
+ #####################
+ # Build
+-- 
+2.16.2
+

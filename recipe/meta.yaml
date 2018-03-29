@@ -9,7 +9,7 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/sagemath/{{ name }}/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  sha256: {{ sha256 }}g
 
 build:
   number: 0
@@ -25,7 +25,6 @@ requirements:
     - pari
   run:
     - python
-    - cython
     - pari
 
 test:

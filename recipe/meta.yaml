@@ -1,6 +1,6 @@
 {% set name = "cysignals" %}
-{% set version = "1.6.8" %}
-{% set sha256 = "4d0c7b035edc1d7ac5b4e4264021b5cf06b6f501b328d9892af102caabe50604" %}
+{% set version = "1.6.9" %}
+{% set sha256 = "08a4a2b6e5ba627c077eb335a55909f7f7e97be61b95b12881c1e31eedb67100" %}
 
 package:
   name: {{ name|lower }}
@@ -10,8 +10,6 @@ source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/sagemath/{{ name }}/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
-  patches:
-    - 0001-Decrease-stack-size-in-Makefile.patch
 
 build:
   number: 0
@@ -27,7 +25,6 @@ requirements:
     - pari
   run:
     - python
-    - cython
     - pari
 
 test:

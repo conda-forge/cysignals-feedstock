@@ -4,15 +4,13 @@ diff --git a/src/cysignals/implementation.c b/src/cysignals/implementation.c
 index 0b07374..ebb048d 100644
 --- a/src/cysignals/implementation.c
 +++ b/src/cysignals/implementation.c
-@@ -279,6 +279,13 @@ static void* _sig_on_trampoline(void* dummy)
+@@ -279,6 +279,11 @@ static void* _sig_on_trampoline(void* dummy)
  }
  
  
 +// Some versions of OSX seem to call MAP_ANONYMOUS MAP_ANON
 +#ifndef MAP_ANONYMOUS
-+#ifdef MAP_ANON
 +#define MAP_ANONYMOUS MAP_ANON
-+#endif
 +#endif
 +
  static void setup_trampoline(void)

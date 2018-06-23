@@ -19,11 +19,12 @@ build:
 
 requirements:
   build:
+    - {{ compiler('c') }}
+  host:
     - python
     - setuptools
     - cython
     - pip
-    - toolchain
     - pari
   run:
     - python

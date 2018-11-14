@@ -11,15 +11,17 @@ source:
   url: https://github.com/sagemath/{{ name }}/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
   patches:
-  - upstream_issue88_anonymous.patch
+    - upstream_issue88_anonymous.patch
+    - fix_tests.diff   # [py==37]
 
 build:
-  number: 0
+  number: 1000
   skip: True  # [win]
 
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
   host:
     - python
     - setuptools

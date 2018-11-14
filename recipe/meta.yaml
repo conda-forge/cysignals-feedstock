@@ -11,7 +11,8 @@ source:
   url: https://github.com/sagemath/{{ name }}/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
   patches:
-  - upstream_issue88_anonymous.patch
+    - upstream_issue88_anonymous.patch
+    - fix_tests.diff   # [py37]
 
 build:
   number: 1000

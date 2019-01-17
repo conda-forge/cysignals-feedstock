@@ -1,6 +1,6 @@
 {% set name = "cysignals" %}
-{% set version = "1.7.2" %}
-{% set sha256 = "db245c19248a869add480e50e5bd97d282176a74b8c6ca7a0072192e576afc67" %}
+{% set version = "1.9.0" %}
+{% set sha256 = "e2098925e02a445c1dad10aa8251cdcd612c153ecf4f1da86346347533433d96" %}
 
 package:
   name: {{ name|lower }}
@@ -12,7 +12,6 @@ source:
   sha256: {{ sha256 }}
   patches:
     - upstream_issue88_anonymous.patch
-    - fix_tests.diff   # [py==37]
 
 build:
   number: 1000

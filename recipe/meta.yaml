@@ -1,6 +1,6 @@
 {% set name = "cysignals" %}
-{% set version = "1.9.0" %}
-{% set sha256 = "e2098925e02a445c1dad10aa8251cdcd612c153ecf4f1da86346347533433d96" %}
+{% set version = "1.10.1" %}
+{% set sha256 = "dfe63bbe295324bd88e39215db8745a9f81668229e3bd931da1b0757bb45f7b8" %}
 
 package:
   name: {{ name|lower }}
@@ -14,7 +14,7 @@ source:
     - upstream_issue88_anonymous.patch
 
 build:
-  number: 1000
+  number: 0
   skip: True  # [win]
 
 requirements:

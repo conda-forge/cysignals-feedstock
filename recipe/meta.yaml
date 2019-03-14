@@ -1,6 +1,6 @@
 {% set name = "cysignals" %}
-{% set version = "1.10.1" %}
-{% set sha256 = "dfe63bbe295324bd88e39215db8745a9f81668229e3bd931da1b0757bb45f7b8" %}
+{% set version = "1.10.2" %}
+{% set sha256 = "8107b67a0c5991f74b0e000c6fa9fe8efcb2a22c7ede5b017aac4c3e20fb7db2" %}
 
 package:
   name: {{ name|lower }}

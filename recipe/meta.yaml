@@ -12,9 +12,10 @@ source:
   sha256: {{ sha256 }}
   patches:
     - upstream_issue88_anonymous.patch
+    - pypy-site-packages.patch
 
 build:
-  number: 2
+  number: 3
   skip: True  # [win]
 
 requirements:

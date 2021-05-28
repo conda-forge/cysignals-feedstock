@@ -1,20 +1,16 @@
 {% set name = "cysignals" %}
-{% set version = "1.10.2" %}
-{% set sha256 = "8107b67a0c5991f74b0e000c6fa9fe8efcb2a22c7ede5b017aac4c3e20fb7db2" %}
+{% set version = "1.10.3" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
-  url: https://github.com/sagemath/{{ name }}/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
-  patches:
-    - upstream_issue88_anonymous.patch
+  url: https://github.com/sagemath/cysignals/archive/{{ version }}.tar.gz
+  sha256: f75cc3512218e9c3b0d7949ffe0bb5925afc5d74588ca4a2d2d8ca68f59b5ec4
 
 build:
-  number: 2
+  number: 0
   skip: True  # [win]
 
 requirements:

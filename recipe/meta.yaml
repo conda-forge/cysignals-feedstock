@@ -8,6 +8,8 @@ package:
 source:
   url: https://github.com/sagemath/cysignals/archive/{{ version }}.tar.gz
   sha256: f75cc3512218e9c3b0d7949ffe0bb5925afc5d74588ca4a2d2d8ca68f59b5ec4
+  patches:
+    - cross-osx-arm64.diff  # [osx and arm64]
 
 build:
   number: 0

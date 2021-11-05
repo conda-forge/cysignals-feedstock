@@ -3,6 +3,6 @@ if [[ "$(uname)" == "Darwin" ]]; then
 fi
 make build
 make install
-if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" ]]; then
+if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" || "${CROSSCOMPILING_EMULATOR}" != "" ]]; then
 make test
 fi

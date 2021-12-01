@@ -15,6 +15,10 @@ source:
     # Introduced in https://github.com/conda-forge/cysignals-feedstock/pull/27
     # but it is unclear why/whether this change is necessary.
     - remove-setrlimit-on-macOS.patch  # [osx]
+    # We are cross-compiling for apple silicon which probably does not support
+    # any of these features. We did not check but there are presently probably
+    # only optimizations for x64.
+    - disable-runtime-checks-in-configure.ac.patch  # [build_platform != target_platform]
 
 build:
   number: 0

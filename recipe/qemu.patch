@@ -47,6 +47,24 @@ index 0673ffa..4dbffb0 100644
  
      """
      cdef char* s = <char*>(16)
--- 
-2.34.1
+diff --git a/src/cysignals/tests.pyx b/src/cysignals/tests.pyx
+index 0673ffa..6a8156d 100644
+--- a/src/cysignals/tests.pyx
++++ b/src/cysignals/tests.pyx
+@@ -615,14 +615,6 @@ def unguarded_dereference_null_pointer():
+         Python will now terminate.
+         ------------------------------------------------------------------------
 
+-    The same but with ``CYSIGNALS_CRASH_QUIET`` set. This will crash
+-    Python silently::
+-
+-        >>> import os
+-        >>> env = dict(os.environ)
+-        >>> env["CYSIGNALS_CRASH_QUIET"] = ""
+-        >>> subpython_err('from cysignals.tests import *; unguarded_dereference_null_pointer()', env=env)
+-
+     """
+     with nogil:
+         dereference_null_pointer()
+--
+2.34.1

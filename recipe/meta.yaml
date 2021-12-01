@@ -9,16 +9,12 @@ source:
   url: https://github.com/sagemath/cysignals/archive/{{ version }}.tar.gz
   sha256: baaa74f4767573554d78ae804f104d81306d80b939ae182f66492ceebaa58115
   patches:
-    - cross-osx-arm64.patch  # [osx and arm64]
+    - cross.patch  # [build_platform != target_platform]
     - qemu.patch
     # setrlimit calls do not seem to work.
     # Introduced in https://github.com/conda-forge/cysignals-feedstock/pull/27
     # but it is unclear why/whether this change is necessary.
     - remove-setrlimit-on-macOS.patch  # [osx]
-    # We are cross-compiling for apple silicon which probably does not support
-    # any of these features. We did not check but there are presently probably
-    # only optimizations for x64.
-    - disable-runtime-checks-in-configure.ac.patch  # [build_platform != target_platform]
 
 build:
   number: 0

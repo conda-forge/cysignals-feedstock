@@ -9,7 +9,8 @@ source:
   url: https://github.com/sagemath/cysignals/archive/{{ version }}.tar.gz
   sha256: baaa74f4767573554d78ae804f104d81306d80b939ae182f66492ceebaa58115
   patches:
-    - cross-osx-arm64.diff  # [osx and arm64]
+    - cross-osx-arm64.patch  # [osx and arm64]
+    - qemu.patch
 
 build:
   number: 0

@@ -11,10 +11,6 @@ source:
   patches:
     - cross.patch  # [build_platform != target_platform]
     - qemu.patch
-    # setrlimit calls do not seem to work.
-    # Introduced in https://github.com/conda-forge/cysignals-feedstock/pull/27
-    # but it is unclear why/whether this change is necessary.
-    - remove-setrlimit-on-macOS.patch  # [osx]
 
 build:
   number: 0

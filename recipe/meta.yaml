@@ -11,6 +11,7 @@ source:
   patches:
     - cross.patch  # [build_platform != target_platform]
     - qemu.patch
+    - verbose.patch
 
 build:
   number: 0

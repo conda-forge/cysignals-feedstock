@@ -1,0 +1,47 @@
+From a0c3da2bf65afc3bea40dfd60e7fd236cebb662b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Julian=20R=C3=BCth?= <julian.rueth@fsfe.org>
+Date: Wed, 1 Dec 2021 17:47:09 -0600
+Subject: [PATCH] disable checks when cross compiling
+
+and assume that this is not supported
+---
+ configure.ac | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/configure.ac b/configure.ac
+index 2910f9b..07f81a0 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -55,6 +55,9 @@ AC_RUN_IFELSE([AC_LANG_PROGRAM([[]], [[asm("leal (%eax), %eax; emms");]])],
+     ,
+     dnl NO
+     [AC_MSG_RESULT([no])]
++    ,
++    dnl NO, cross compiling.
++    [AC_MSG_RESULT([no])]
+ )
+ 
+ AC_MSG_CHECKING([whether setjmp() saves the signal mask])
+@@ -84,6 +87,9 @@ AC_RUN_IFELSE([AC_LANG_PROGRAM(
+     ,
+     dnl NO
+     [AC_MSG_RESULT([no])]
++    ,
++    dnl NO, cross compiling.
++    [AC_MSG_RESULT([no])]
+ )
+ 
+ AC_MSG_CHECKING([for GNU libc])
+@@ -132,6 +138,9 @@ AC_RUN_IFELSE([AC_LANG_SOURCE(
+     ,
+     dnl NO
+     [AC_MSG_RESULT([no])]
++    ,
++    dnl NO, cross compiling.
++    [AC_MSG_RESULT([no])]
+ )
+ 
+ dnl Check for atomic operations
+-- 
+2.34.1
+

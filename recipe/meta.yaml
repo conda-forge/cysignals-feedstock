@@ -1,5 +1,5 @@
 {% set name = "cysignals" %}
-{% set version = "1.10.3" %}
+{% set version = "1.11.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,13 +7,17 @@ package:
 
 source:
   url: https://github.com/sagemath/cysignals/archive/{{ version }}.tar.gz
-  sha256: f75cc3512218e9c3b0d7949ffe0bb5925afc5d74588ca4a2d2d8ca68f59b5ec4
+  sha256: baaa74f4767573554d78ae804f104d81306d80b939ae182f66492ceebaa58115
   patches:
-    - cross-osx-arm64.diff  # [osx and arm64]
+    - cross.patch  # [build_platform != target_platform]
+    - qemu.patch
+    - verbose.patch
+    # See https://github.com/conda-forge/cysignals-feedstock/issues/37
+    - issue-159.patch  # [aarch64]
 
 build:
-  number: 2
-  skip: True  # [win]
+  number: 0
+  skip: true  # [win]
 
 requirements:
   build:
@@ -44,7 +48,7 @@ about:
   home: https://github.com/sagemath/cysignals
   license: LGPL-3.0-or-later
   license_file: LICENSE
-  summary: 'interrupt and signal handling for Cython'
+  summary: interrupt and signal handling for Cython
 
   doc_url: http://cysignals.readthedocs.io
   dev_url: https://github.com/sagemath/cysignals

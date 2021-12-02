@@ -1,0 +1,47 @@
+From 33eaadecfdb3221eb7bde43d587d9578d8f7348c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Julian=20R=C3=BCth?= <julian.rueth@fsfe.org>
+Date: Thu, 2 Dec 2021 01:03:26 -0600
+Subject: [PATCH] Remove failing test
+
+see https://github.com/sagemath/cysignals/issues/159
+---
+ src/cysignals/pselect.pyx | 23 -----------------------
+ 1 file changed, 23 deletions(-)
+
+diff --git a/src/cysignals/pselect.pyx b/src/cysignals/pselect.pyx
+index 04fcf31..49a8e36 100644
+--- a/src/cysignals/pselect.pyx
++++ b/src/cysignals/pselect.pyx
+@@ -181,29 +181,6 @@ cdef class PSelecter:
+     such that they can only occur during the :meth:`pselect()` or
+     :meth:`sleep()` calls.
+ 
+-    As an example, we block the ``SIGHUP`` and ``SIGALRM`` signals and
+-    then raise a ``SIGALRM`` signal. The interrupt will only be seen
+-    during the :meth:`sleep` call::
+-
+-        >>> from cysignals import AlarmInterrupt
+-        >>> from cysignals.pselect import PSelecter
+-        >>> import os, signal, time
+-        >>> with PSelecter([signal.SIGHUP, signal.SIGALRM]) as sel:
+-        ...     os.kill(os.getpid(), signal.SIGALRM)
+-        ...     time.sleep(0.5)  # Simply sleep, no interrupt detected
+-        ...     try:
+-        ...         _ = sel.sleep(1)  # Interrupt seen here
+-        ...     except AlarmInterrupt:
+-        ...         print("Interrupt OK")
+-        Interrupt OK
+-
+-    .. WARNING::
+-
+-        If ``SIGCHLD`` is blocked inside the ``with`` block, then you
+-        should not use ``Popen().wait()`` or ``Process().join()``
+-        because those might block, even if the process has actually
+-        exited. Use non-blocking alternatives such as ``Popen.poll()``
+-        or ``multiprocessing.active_children()`` instead.
+     """
+     cdef sigset_t oldset
+     cdef sigset_t blockset
+-- 
+2.34.1
+

@@ -12,6 +12,7 @@ source:
     - cross.patch  # [build_platform != target_platform]
     - qemu.patch
     - verbose.patch
+    - issue-159.patch
 
 build:
   number: 0

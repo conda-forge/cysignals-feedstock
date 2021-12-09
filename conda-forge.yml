@@ -1,5 +1,7 @@
 build_platform:
-  linux_aarch64: linux_64
+  # When cross-compiling, cysignals.so gets linked with "gcc" instead of the aarch64 gcc, see https://github.com/conda-forge/cysignals-feedstock/pull/38
+  linux_aarch64: linux_aarch64
+  # Some tests time out when running in QEMU, see https://github.com/conda-forge/cysignals-feedstock/pull/38
   linux_ppc64le: linux_ppc64le
   osx_arm64: osx_64
 conda_forge_output_validation: true

@@ -1,6 +1,10 @@
 #!/bin/bash
 set -ex
 
+if [[ "$python_impl" == "pypy" ]]; then
+  sed -i.bak 's/python\*/pypy\*/g' Makefile
+fi
+
 make configure PYTHON="$PYTHON"
 ./configure --prefix=$PREFIX
 make build PYTHON="$PYTHON"

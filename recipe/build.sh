@@ -6,5 +6,5 @@ make configure PYTHON="$PYTHON"
 make build PYTHON="$PYTHON"
 ${PYTHON:-python} -m pip install -vv .
 if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" || "${CROSSCOMPILING_EMULATOR}" != "" ]]; then
-  make test
+  make check-prefix
 fi

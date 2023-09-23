@@ -16,7 +16,7 @@ source:
     - issue-159.patch  # [aarch64]
 
 build:
-  number: 2
+  number: 3
   skip: true  # [win]
 
 requirements:

@@ -16,14 +16,14 @@ source:
     - issue-159.patch  # [aarch64]
 
 build:
-  number: 2
+  number: 3
   skip: true  # [win]
 
 requirements:
   build:
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-    - cython                                 # [build_platform != target_platform]
+    - cython <3                              # [build_platform != target_platform]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - make
@@ -33,7 +33,7 @@ requirements:
   host:
     - python
     - setuptools
-    - cython
+    - cython <3
     - pip
     - pari
   run:

@@ -1,5 +1,5 @@
 {% set name = "cysignals" %}
-{% set version = "1.11.2" %}
+{% set version = "1.11.3" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/sagemath/cysignals/archive/{{ version }}.tar.gz
-  sha256: 78273a16d200d3edd2d80fef96a32dab89e9f4105f3e26b3933f4ecf33e1234e
+  sha256: adc98e8eba4e91d6be8cc3f71cee86cf78728b5a16023ae276f2e7029e8a17c9
   patches:
     - cross.patch  # [build_platform != target_platform]
     - qemu.patch
@@ -16,7 +16,7 @@ source:
     - issue-159.patch  # [aarch64]
 
 build:
-  number: 3
+  number: 0
   skip: true  # [win]
 
 requirements:

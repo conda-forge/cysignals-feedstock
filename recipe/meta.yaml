@@ -16,7 +16,7 @@ source:
     - issue-159.patch  # [aarch64]
 
 build:
-  number: 3
+  number: 4
   skip: true  # [win]
 
 requirements:
@@ -25,6 +25,7 @@ requirements:
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - cython <3                              # [build_platform != target_platform]
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
     - make
     - autoconf

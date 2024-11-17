@@ -16,7 +16,7 @@ source:
     - issue-159.patch  # [aarch64]
 
 build:
-  number: 3
+  number: 4
   skip: true  # [win]
 
 requirements:
@@ -39,6 +39,7 @@ requirements:
   run:
     - python
     - pari
+    - {{ pin_compatible('cython') }}
 
 test:
   imports:

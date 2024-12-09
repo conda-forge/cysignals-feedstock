@@ -17,8 +17,9 @@ build:
   number: 0
   script:
     - export CPPFLAGS=${CPPFLAGS/-D_FORTIFY_SOURCE=2/}   # [unix]
-    - {{ PYTHON }} -m pip install . -vv
-    - pytest src                             # [build_platform != target_platform]
+    - {{ PYTHON }} -m pip install . -vv -Csetup-args=${MESON_ARGS// / -Csetup-args=}  # [unix]
+    - {{ PYTHON }} -m pip install . -vv      # [not unix]
+    - pytest src                             # [build_platform == target_platform]
 
 requirements:
   build:

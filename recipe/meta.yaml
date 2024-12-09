@@ -17,7 +17,7 @@ build:
   number: 0
   script:
     - {{ PYTHON }} -m pip install . -vv
-    - pytest src
+    - pytest src                             # [build_platform != target_platform]
 
 requirements:
   build:

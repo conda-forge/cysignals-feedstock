@@ -1,5 +1,5 @@
 {% set name = "cysignals" %}
-{% set version = "1.11.2" %}
+{% set version = "1.12.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,38 +7,37 @@ package:
 
 source:
   url: https://github.com/sagemath/cysignals/archive/{{ version }}.tar.gz
-  sha256: 78273a16d200d3edd2d80fef96a32dab89e9f4105f3e26b3933f4ecf33e1234e
+  sha256: 9036015329532f95176e03d9a6e5c08249f9cff2fd6730fc0abd0c395c246582
   patches:
-    - cross.patch  # [build_platform != target_platform]
     - qemu.patch
-    - verbose.patch
     # See https://github.com/conda-forge/cysignals-feedstock/issues/37
     - issue-159.patch  # [aarch64]
 
 build:
-  number: 3
-  skip: true  # [win]
+  number: 0
+  script:
+    - export CPPFLAGS=${CPPFLAGS/-D_FORTIFY_SOURCE=2/}   # [unix]
+    - {{ PYTHON }} -m pip install . -vv -Csetup-args=${MESON_ARGS// / -Csetup-args=}  # [unix]
+    - {{ PYTHON }} -m pip install . -vv      # [not unix]
+    - pytest src                             # [build_platform == target_platform]
 
 requirements:
   build:
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-    - cython <3                              # [build_platform != target_platform]
+    - cython >=0.28                          # [build_platform != target_platform]
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
-    - make
-    - autoconf
-    - automake
-    - libtool
+    - ninja
   host:
     - python
-    - setuptools
-    - cython <3
+    - meson-python
+    - cython >=0.28
     - pip
-    - pari
+    - pytest
   run:
     - python
-    - pari
 
 test:
   imports:

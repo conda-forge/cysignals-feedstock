@@ -1,5 +1,5 @@
 {% set name = "cysignals" %}
-{% set version = "1.12.1" %}
+{% set version = "1.12.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/sagemath/cysignals/archive/{{ version }}.tar.gz
-  sha256: 1370622692f1bc159c6524395e9cf2f5fe16b49ee437a9bb96d6a8689e2d4b2b
+  sha256: 27e9b40b12aa26015a0051d61253c993e9f81f35cbc4a25216f202e59e86a57c
   patches:
     - qemu.patch
     # See https://github.com/conda-forge/cysignals-feedstock/issues/37

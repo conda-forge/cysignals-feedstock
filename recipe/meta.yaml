@@ -1,5 +1,5 @@
 {% set name = "cysignals" %}
-{% set version = "1.12.2" %}
+{% set version = "1.12.3" %}
 
 package:
   name: {{ name|lower }}
@@ -7,14 +7,14 @@ package:
 
 source:
   url: https://github.com/sagemath/cysignals/archive/{{ version }}.tar.gz
-  sha256: 27e9b40b12aa26015a0051d61253c993e9f81f35cbc4a25216f202e59e86a57c
+  sha256: db04b73cabf0a4829e02ca9fb4c82ec4d4c9e70e5830dbdae7580fe733fa3d4f
   patches:
     - qemu.patch
     # See https://github.com/conda-forge/cysignals-feedstock/issues/37
     - issue-159.patch  # [aarch64]
 
 build:
-  number: 1
+  number: 0
   script:
     - export CPPFLAGS=${CPPFLAGS/-D_FORTIFY_SOURCE=2/}   # [unix]
     - {{ PYTHON }} -m pip install . -vv -Csetup-args=${MESON_ARGS// / -Csetup-args=}  # [unix]

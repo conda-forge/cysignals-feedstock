@@ -14,7 +14,7 @@ source:
     - issue-159.patch  # [aarch64]
 
 build:
-  number: 0
+  number: 1
   script:
     - export CPPFLAGS=${CPPFLAGS/-D_FORTIFY_SOURCE=2/}   # [unix]
     - {{ PYTHON }} -m pip install . -vv -Csetup-args=${MESON_ARGS// / -Csetup-args=}  # [unix]

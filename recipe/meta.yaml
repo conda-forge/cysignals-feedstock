@@ -15,7 +15,7 @@ source:
 
 build:
   number: 0
-  skip: true  # [py < 312]
+  skip: true  # [py < 313]
   script:
     - export CPPFLAGS=${CPPFLAGS/-D_FORTIFY_SOURCE=2/}   # [unix]
     - {{ PYTHON }} -m pip install . -vv -Csetup-args=${MESON_ARGS// / -Csetup-args=}  # [unix]

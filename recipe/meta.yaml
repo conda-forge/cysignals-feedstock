@@ -55,6 +55,7 @@ about:
 
 extra:
   recipe-maintainers:
+    - conda-forge/sage
     - dfroger
     - isuruf
     - saraedum
